@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Advising Notes Search — direct-table CDC handler (local SAM)
+
+Globals:
+  Function:
+    Timeout: 60
+    MemorySize: 256
+    Runtime: python3.11
+
+Resources:
+  CDCHandler:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: advising-notes-cdc-handler-direct
+      CodeUri: lambda/
+      Handler: handler.lambda_handler
+      Description: Direct-table production CDC handler
+      Environment:
+        Variables:
+          LOCAL_DEV: "true"
+          RDS_SCHEMA_BOA_APP_RDS_DATA: boa_app_rds_direct
+          HANDLER_VERSION: direct-v1
