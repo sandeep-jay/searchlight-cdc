@@ -24,7 +24,9 @@ from logging_utils import log, log_exception
 def run_sqs_batch(
     event: dict[str, Any],
     context: Any,
-    process_message: Callable[[psycopg2.extensions.connection, dict[str, Any], str], None],
+    process_message: Callable[
+        [psycopg2.extensions.connection, dict[str, Any], str], None
+    ],
     service_name: str,
 ) -> dict[str, Any]:
     """Process SQS FIFO records with partial batch failure reporting."""
@@ -44,7 +46,12 @@ def run_sqs_batch(
 
     try:
         conn = get_db_connection()
-        log(service_name, logging.DEBUG, "Database connection opened", request_id=request_id)
+        log(
+            service_name,
+            logging.DEBUG,
+            "Database connection opened",
+            request_id=request_id,
+        )
 
         for record in records:
             message_id = record.get("messageId", "unknown")
@@ -82,11 +89,18 @@ def run_sqs_batch(
             e,
             request_id=request_id,
         )
-        batch_item_failures = [{"itemIdentifier": r.get("messageId", "unknown")} for r in records]
+        batch_item_failures = [
+            {"itemIdentifier": r.get("messageId", "unknown")} for r in records
+        ]
     finally:
         if conn and not conn.closed:
             conn.close()
-            log(service_name, logging.DEBUG, "Database connection closed", request_id=request_id)
+            log(
+                service_name,
+                logging.DEBUG,
+                "Database connection closed",
+                request_id=request_id,
+            )
 
     failed = len(batch_item_failures)
     log(

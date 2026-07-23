@@ -57,7 +57,9 @@ def map_note_row_to_payload(row: dict[str, Any]) -> dict[str, Any]:
     note_id = str(row["id"]) if row.get("id") is not None else None
     sid = row.get("sid")
     if not sid or not note_id:
-        raise ValueError("Note row missing required 'sid' or 'id' field for composite id")
+        raise ValueError(
+            "Note row missing required 'sid' or 'id' field for composite id"
+        )
     composite_id = f"{sid}-{note_id}"
 
     return {
