@@ -23,8 +23,12 @@ def setup_env_vars():
     )
     os.environ["HANDLER_VERSION"] = "direct-v1"
     for k in (
-        "NOTES_DELTA_TABLE", "NOTES_NIGHTLY_TABLE", "TOPICS_DELTA_TABLE",
-        "TOPICS_NIGHTLY_TABLE", "FTS_DELTA_TABLE", "FTS_NIGHTLY_TABLE",
+        "NOTES_DELTA_TABLE",
+        "NOTES_NIGHTLY_TABLE",
+        "TOPICS_DELTA_TABLE",
+        "TOPICS_NIGHTLY_TABLE",
+        "FTS_DELTA_TABLE",
+        "FTS_NIGHTLY_TABLE",
     ):
         os.environ.pop(k, None)
     yield
@@ -53,35 +57,47 @@ def mock_secrets_manager():
 @pytest.fixture
 def note_upsert_event():
     return {
-        "Records": [{
-            "messageId": "test-message-1",
-            "body": json.dumps({
-                "table": "notes",
-                "operation": "create",
-                "row": {
-                    "id": 12345,
-                    "sid": "SID001",
-                    "body": "Student discussed graduation plan",
-                    "author_uid": "uid123",
-                    "author_name": "Jane Advisor",
-                    "subject": "Lorem ipsum meeting notes",
-                    "created_at": "2024-01-01T00:00:00Z",
-                    "updated_at": "2024-01-01T00:00:00Z",
-                },
-            }),
-        }]
+        "Records": [
+            {
+                "messageId": "test-message-1",
+                "body": json.dumps(
+                    {
+                        "table": "notes",
+                        "operation": "create",
+                        "row": {
+                            "id": 12345,
+                            "sid": "SID001",
+                            "body": "Student discussed graduation plan",
+                            "author_uid": "uid123",
+                            "author_name": "Jane Advisor",
+                            "subject": "Lorem ipsum meeting notes",
+                            "created_at": "2024-01-01T00:00:00Z",
+                            "updated_at": "2024-01-01T00:00:00Z",
+                        },
+                    }
+                ),
+            }
+        ]
     }
 
 
 @pytest.fixture
 def note_delete_event():
     return {
-        "Records": [{
-            "messageId": "test-message-2",
-            "body": json.dumps({
-                "table": "notes",
-                "operation": "delete",
-                "row": {"id": 99999, "sid": "SID001", "deleted_at": "2024-01-02T00:00:00Z"},
-            }),
-        }]
+        "Records": [
+            {
+                "messageId": "test-message-2",
+                "body": json.dumps(
+                    {
+                        "table": "notes",
+                        "operation": "delete",
+                        "row": {
+                            "id": 99999,
+                            "sid": "SID001",
+                            "deleted_at": "2024-01-02T00:00:00Z",
+                        },
+                    }
+                ),
+            }
+        ]
     }

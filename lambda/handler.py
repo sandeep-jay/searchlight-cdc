@@ -150,7 +150,9 @@ def process_note(
         note_id = str(row.get("id")) if row.get("id") is not None else None
         sid = row.get("sid")
         if not note_id or not sid:
-            raise ValueError("Note row missing required 'id' or 'sid' field for composite id")
+            raise ValueError(
+                "Note row missing required 'id' or 'sid' field for composite id"
+            )
 
         composite_id = f"{sid}-{note_id}"
         cur.execute(f"DELETE FROM {t.notes} WHERE id = %s", (composite_id,))
