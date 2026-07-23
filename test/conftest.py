@@ -7,7 +7,7 @@ from unittest.mock import Mock, patch
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "lambda"))
 
-import pytest
+import pytest  # noqa: E402
 
 
 @pytest.fixture(autouse=True)
