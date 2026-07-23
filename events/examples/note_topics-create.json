@@ -1,0 +1,18 @@
+{
+  "Records": [
+    {
+      "messageId": "example-note-topics-create-001",
+      "receiptHandle": "example-receipt-handle",
+      "body": "{\"table\":\"note_topics\",\"operation\":\"create\",\"row\":{\"id\":900101,\"note_id\":900001,\"topic\":\"Sample Topic Alpha\",\"author_uid\":\"90000002\",\"deleted_at\":null}}",
+      "attributes": {
+        "ApproximateReceiveCount": "1",
+        "SentTimestamp": "1609459200000"
+      },
+      "messageAttributes": {},
+      "md5OfBody": "example-md5",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:us-west-2:123456789012:example-queue.fifo",
+      "awsRegion": "us-west-2"
+    }
+  ]
+}

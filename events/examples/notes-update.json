@@ -1,0 +1,18 @@
+{
+  "Records": [
+    {
+      "messageId": "example-notes-update-001",
+      "receiptHandle": "example-receipt-handle",
+      "body": "{\"table\":\"notes\",\"operation\":\"update\",\"row\":{\"id\":900001,\"author_uid\":\"90000001\",\"author_name\":\"Lorem Ipsum\",\"author_role\":\"Sample Advising Role\",\"author_dept_codes\":[\"DEPT01\"],\"body\":\"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\",\"contact_type\":null,\"is_draft\":false,\"is_private\":false,\"peer_advising_department_id\":null,\"set_date\":null,\"sid\":\"9000000000001\",\"subject\":\"Lorem ipsum meeting notes (revised)\",\"created_at\":\"2020-01-01T12:00:00.000000+00:00\",\"deleted_at\":null,\"updated_at\":\"2020-01-02T12:00:00.000000+00:00\",\"note_template_id\":null}}",
+      "attributes": {
+        "ApproximateReceiveCount": "1",
+        "SentTimestamp": "1609459200000"
+      },
+      "messageAttributes": {},
+      "md5OfBody": "example-md5",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:us-west-2:123456789012:example-queue.fifo",
+      "awsRegion": "us-west-2"
+    }
+  ]
+}
