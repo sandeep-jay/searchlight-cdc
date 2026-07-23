@@ -1,0 +1,48 @@
+# Local environment
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Local secrets and config (never commit)
+env.json
+terraform.tfvars
+terraform/*.tfvars
+!terraform/*.tfvars.example
+secrets.json
+credentials.json
+*.pem
+*.key
+
+# AWS SAM / Terraform working dirs
+.aws-sam/
+.terraform/
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.tox/
+htmlcov/
+.coverage
+coverage.xml
+.pytest_cache/
+.ruff_cache/
+
+# Runtime / local data
+data/
+
+# OS and editors
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Cursor local project state (not shared rules)
+.cursor/
